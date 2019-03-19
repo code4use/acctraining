@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136042633-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-136042633-1');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="description" content="Тренажер таблицы умножения">
+    <meta name="keywords" content="тренажёр тренажер таблица умножения">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Таблица умножения - игра.</title>
+    <link rel="stylesheet" type="text/css" href="main.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="my.js"></script>
+    </head>
+<body>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(52743535, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/52743535" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+<div class="head">
+    <h1 style="text-align: center; margin: 0;"> Тренажёр таблицы умножения</h1>
+    <!--<a href="#">Считаем вместе</a>-->
+</div>
+<div class="line"></div>
+<div id="content">
+    <!--<h1>Таблица умножения</h1> -->
+    <form action="" method="GET">
+        <table width=100%>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <p>Закрепление навыков счёта в игровой форме. Введите результат операции после символа = и нажмите клавишу &quot;Enter&quot;
+                     или кликите по клавише &quot; Проверить&quot;. Тренажер эффективен, работает быстро и предоставляется бесплатно.
+                     Для перезапуска просто обновите страницу (клавиша F5).</p>
+                </td>
+            </tr>
+            <tr>
+                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: green"> Верно </strong></td>
+                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: red"> Неверно </strong></td>
+            </tr>
+            <tr>
+                    <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_ok" class="input-multipliers" style="color: green" readonly value="0"></td>
+                    <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_bad" class="input-multipliers" style="color: red" readonly value="0"></td>
+            </tr>
+            <tr>
+                <td colspan="4" valign="middle" align="center">
+                    <input type="text" maxlength="3" size=2 name="num1" class="input-multipliers" readonly="" value="2">                             
+                    <strong style="font-size: 50px; vertical-align: top;">⋅</strong>   
+                    <input type="text" maxlength="3" size=2 name="num2" class="input-multipliers" readonly="" value="5">
+                    <strong style="font-size: 50px; vertical-align: top;">=</strong>   
+                    <input type="text" maxlength="3" size=2 name="res" class="input-form" value="">
+                </td>
+            </tr>
+            <tr>
+                    <td colspan="4" align="center"><input type="submit" name="chkButton" onclick="return chkForm()" value="Проверить" title="Проверить - клавиша ENter"></td>
+            </tr>
+            </table>
+    </form>
+</div>
+<!--<div id="leftcol">
+    <div class="catname">Материалы в левой колонке</div>
+</div> -->
+</body>
+</html>
