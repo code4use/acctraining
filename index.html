@@ -42,31 +42,35 @@
 <div class="line"></div>
 <div id="content">
     <!--<h1>Таблица умножения</h1> -->
-    <form action="" method="GET">
+    <form action="" method="GET" autocomplete="off">
         <table width=100%>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td colspan="4">
+                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: green"> Верно </strong></td>
+                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: navy"> Время </strong></td>
+                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: red"> Неверно </strong></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_ok" class="input-multipliers" style="color: green" readonly value="0"></td>
+                <td colspan="2" align="center"><input type="text" maxlength="8" size=8 name="timer" class="input-multipliers" style="color: navy; width: 144px;" readonly value="0"></td>
+                <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_bad" class="input-multipliers" style="color: red" readonly value="0"></td>
+            </tr>
+            <tr>
+                <td colspan="6">
                     <p>Закрепление навыков счёта в игровой форме. Введите результат операции после символа = и нажмите клавишу &quot;Enter&quot;
                      или кликите по клавише &quot; Проверить&quot;. Тренажер эффективен, работает быстро и предоставляется бесплатно.
                      Для перезапуска просто обновите страницу (клавиша F5).</p>
                 </td>
             </tr>
             <tr>
-                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: green"> Верно </strong></td>
-                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: red"> Неверно </strong></td>
-            </tr>
-            <tr>
-                    <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_ok" class="input-multipliers" style="color: green" readonly value="0"></td>
-                    <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_bad" class="input-multipliers" style="color: red" readonly value="0"></td>
-            </tr>
-            <tr>
-                <td colspan="4" valign="middle" align="center">
+                <td colspan="6" valign="middle" align="center">
                     <input type="text" maxlength="3" size=2 name="num1" class="input-multipliers" readonly="" value="2">                             
                     <strong style="font-size: 50px; vertical-align: top;">⋅</strong>   
                     <input type="text" maxlength="3" size=2 name="num2" class="input-multipliers" readonly="" value="5">
@@ -75,7 +79,7 @@
                 </td>
             </tr>
             <tr>
-                    <td colspan="4" align="center"><input type="submit" name="chkButton" onclick="return chkForm()" value="Проверить" title="Проверить - клавиша ENter"></td>
+                    <td colspan="6" align="center"><input type="submit" name="chkButton" onclick="return chkForm()" value="Проверить" title="Проверить - клавиша ENter"></td>
             </tr>
             </table>
     </form>

@@ -1,6 +1,11 @@
 var num1=0, num2=0, res=0, res_ok=0, res_bad=0, isRight=true;
+var startDatetime = new Date();
+var startmSeconds = startDatetime.getTime();
+var myTimerIns;
 
 $(document).ready(function(){
+    myTimerIns = setInterval(theTimer, 1000);
+    $("input[name=timer]").val("0:0");
     newRound();
 });
 
@@ -30,4 +35,13 @@ function newRound() {
     $("input[name=num2]").val(String(num2));
     $("input[name=res]").val("");
     $("input[name=res]").focus();
+}
+
+function theTimer() {
+    let curDatetime = new Date();
+    let curmSeconds = curDatetime.getTime();
+    let seconds = Math.floor((curmSeconds-startmSeconds)/1000);
+    let minutes = Math.floor(seconds / 60); 
+    seconds %= 60;
+    $("input[name=timer]").val(String(minutes)+":"+String(seconds));
 }
