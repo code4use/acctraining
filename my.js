@@ -26,10 +26,14 @@ function newRound() {
     $("input[name=res_ok]").val(String(res_ok));
     $("input[name=res_bad]").val(String(res_bad));
     if (isRight) {
+        $("input[name=hint]").val("");
         num1=Math.floor(Math.random()*10);
         if (num1<2) num1=9-num1;
         num2=Math.floor(Math.random()*10);
         if(num2<2) num2=9-num2;
+    }
+    else {
+        $("input[name=hint]").val(String(num1*num2));
     }
     $("input[name=num1]").val(String(num1));
     $("input[name=num2]").val(String(num2));
