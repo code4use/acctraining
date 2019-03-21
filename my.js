@@ -1,12 +1,9 @@
 var num1=0, num2=0, res=0, res_ok=0, res_bad=0, isRight=true;
-var startDatetime = new Date();
-var startmSeconds = startDatetime.getTime();
-var myTimerIns;
+var startDatetime, startmSecondsime, myTimerIns;
 
 $(document).ready(function(){
     myTimerIns = setInterval(theTimer, 1000);
-    $("input[name=timer]").val("0:0");
-    newRound();
+    allReset();    
 });
 
 function chkForm() {
@@ -48,4 +45,13 @@ function theTimer() {
     let minutes = Math.floor(seconds / 60); 
     seconds %= 60;
     $("input[name=timer]").val(String(minutes)+":"+String(seconds));
+}
+
+function allReset() {
+    num1=0, num2=0, res=0, res_ok=0, res_bad=0, isRight=true;
+    startDatetime = new Date();
+    startmSeconds = startDatetime.getTime();    
+    $("input[name=timer]").val("0:0");
+    newRound();
+    return false;
 }
