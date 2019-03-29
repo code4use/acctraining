@@ -54,3 +54,7 @@ body {
     text-align: center;
     background: lightgray;
 }
+#operchar {
+    font-size: 46px;
+    vertical-align: top;
+}

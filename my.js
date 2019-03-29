@@ -1,41 +1,81 @@
-var num1=0, num2=0, res=0, res_ok=0, res_bad=0, isRight=true;
+var res_ok=0, res_bad=0;
 var startDatetime, startmSecondsime, myTimerIns;
+var allOperands = {firstOperand: 1, secondOperand: 1, trueResult: 1, assumedResult:1, theOperation:0};
 
 $(document).ready(function(){
-    myTimerIns = setInterval(theTimer, 1000);
     allReset();    
+    myTimerIns = setInterval(theTimer, 1000);
 });
 
 function chkForm() {
-    res=Number($("input[name=res]").val());
-    isRight=(res==num1*num2);
-    if (isRight) {
+    allOperands.assumedResult=Number($("input[name=res]").val());
+    if (allOperands.trueResult==allOperands.assumedResult) {
         res_ok+=1;
+        $("input[name=res_ok]").val(String(res_ok));
+        $("input[name=hint]").val("");
     }
     else {
         res_bad+=1;
+        $("input[name=res_bad]").val(String(res_bad));
     }
     newRound();
     return false;
 }
 
+function newOperands(curOperands) {
+    let intTmp1 = Math.floor(Math.random()*10);
+    let intTmp2 = Math.floor(Math.random()*10);
+    if( intTmp1 < 2 ) intTmp1 = 9-intTmp1;
+    if( intTmp2 < 2 ) intTmp2 = 9-intTmp2;
+    switch (curOperands.theOperation) {
+    case 1:
+        //division
+        curOperands.firstOperand = intTmp1*intTmp2;
+        curOperands.secondOperand = intTmp1;
+        curOperands.trueResult = intTmp2;
+        break;
+    case 0:
+        // multiplication
+        curOperands.firstOperand = intTmp1;
+        curOperands.secondOperand = intTmp2;
+        curOperands.trueResult = intTmp1 * intTmp2;
+        break;                        
+    }
+}
+
 function newRound() {
-    $("input[name=res_ok]").val(String(res_ok));
-    $("input[name=res_bad]").val(String(res_bad));
-    if (isRight) {
-        $("input[name=hint]").val("");
-        num1=Math.floor(Math.random()*10);
-        if (num1<2) num1=9-num1;
-        num2=Math.floor(Math.random()*10);
-        if(num2<2) num2=9-num2;
+    if (allOperands.trueResult==allOperands.assumedResult) {
+        newOperands(allOperands);
     }
     else {
-        $("input[name=hint]").val(String(num1*num2));
+        $("input[name=hint]").val(String(allOperands.trueResult));
     }
-    $("input[name=num1]").val(String(num1));
-    $("input[name=num2]").val(String(num2));
+    $("input[name=num1]").val(String(allOperands.firstOperand));
+    $("input[name=num2]").val(String(allOperands.secondOperand));
     $("input[name=res]").val("");
     $("input[name=res]").focus();
+}
+
+function allReset() {
+    res_ok=0, res_bad=0;
+    $("input[name=res_ok]").val(String(res_ok));
+    $("input[name=res_bad]").val(String(res_bad));
+    $("input[name=hint]").val("");
+    if(allOperands.theOperation == 0) {
+        $("#operchar").html('&#8729;');
+        $("#modebutton").html('Деление');
+    }
+    else {
+        $("#operchar").html('&#8758;');
+        $("#modebutton").html('Умножение');
+    }
+    allOperands.trueResult = 1;
+    allOperands.assumedResult = allOperands.trueResult;
+    startDatetime = new Date();
+    startmSeconds = startDatetime.getTime();    
+    $("input[name=timer]").val("0:0");
+    newRound();
+    return false;
 }
 
 function theTimer() {
@@ -47,11 +87,11 @@ function theTimer() {
     $("input[name=timer]").val(String(minutes)+":"+String(seconds));
 }
 
-function allReset() {
-    num1=0, num2=0, res=0, res_ok=0, res_bad=0, isRight=true;
-    startDatetime = new Date();
-    startmSeconds = startDatetime.getTime();    
-    $("input[name=timer]").val("0:0");
-    newRound();
+function switchMode() {
+    if(allOperands.theOperation == 0) 
+        allOperands.theOperation = 1;
+    else 
+        allOperands.theOperation = 0;
+    allReset();
     return false;
 }

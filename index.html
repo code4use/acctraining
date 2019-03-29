@@ -65,30 +65,32 @@
             <tr>
                 <td colspan="6">
                     <p>Закрепление навыков счёта в игровой форме. Введите результат операции после символа = и нажмите клавишу &quot;Enter&quot;
-                     или кликните по клавише &quot;Ввод&quot;. Тренажер эффективен, работает быстро и предоставляется бесплатно.
+                     или кликните по кнопке &quot;Ввод&quot;. Тренажер эффективен, быстр и бесплатен. 
+                     Для переключения режимов умножения и деления кликните соответствующую кнопку. 
                      Для перезапуска просто обновите страницу (клавиша F5) или кликните по кнопке &quot;Сброс&quot;.</p>
                 </td>
             </tr>
             <tr>
                 <td colspan="6" valign="middle" align="center">
                     <input type="text" maxlength="3" size=2 name="num1" class="input-multipliers" readonly="" value="">                             
-                    <strong style="font-size: 50px; vertical-align: top;">⋅</strong>   
+                    <strong id="operchar">∙</strong>   
                     <input type="text" maxlength="3" size=2 name="num2" class="input-multipliers" readonly="" value="">
                     <strong style="font-size: 50px; vertical-align: top;">=</strong>   
                     <input type="text" maxlength="3" size=2 name="res" class="input-form" value="">
-                    <input type="text" maxlength="3" size=2 name="hint" class="input-multipliers" style="color: green" readonly="">                </td>
+                    <input type="text" maxlength="3" size=2 name="hint" class="input-multipliers" style="color: green" readonly="">
+                </td>
 
             </tr>
             <tr>
-                <td> </td>
-                <td colspan="4" align="center"><input type="submit" name="chkButton" onclick="return chkForm()" value="Ввод" title="Проверить - клавиша ENter"></td>
-                <td align="center"><input type="submit" name="chkButton" onclick="return allReset()" value="Сброс" title="Перезапуск счётчиков"></td>
+                <td colspan="2" align="left"> <button id="modebutton" type="button" name="modeButton" onclick="return switchMode()" title="Переключение режимов умножение/деление">Режим</button> </td>
+                <td colspan="2" align="center"><input type="submit" name="chkButton" onclick="return chkForm()" value="Ввод" title="Проверить - клавиша ENter"></td>
+                <td colspan="2" align="right"><button type="button" name="resetButton" onclick="return allReset()" title="Перезапуск счётчиков"> Сброс </button> </td>
             </tr>
             </table>
     </form>
 </div>
 <!--<div id="leftcol">
-    <div class="catname">Материалы в левой колонке</div>
+    <div class="catname">Материалы в левой колонке⋅</div>
 </div> -->
 </body>
 </html>
