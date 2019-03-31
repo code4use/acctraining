@@ -1,13 +1,15 @@
 body {
     background-color: #f0f0f0;
     font-size: 14px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Open Sans', Verdana, Tahoma, sans-serif;
     color: #030303;
-    min-width: 480px;
-    max-width: 640px;
+    min-width: 360px;
+    max-width: 480px;
     margin: 0px auto 0px auto;
 }
-
+td {
+    padding-top: 10px;
+}
 .head {
     background-color: white;
     width: 100%;
@@ -57,4 +59,14 @@ body {
 #operchar {
     font-size: 46px;
     vertical-align: top;
+}
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+button {
+    font-size: 150%;
 }

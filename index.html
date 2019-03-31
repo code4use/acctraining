@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Таблица умножения - игра.</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="main.css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="my.js"></script>
@@ -36,7 +37,7 @@
   <!-- /Yandex.Metrika counter -->
 
 <div class="head">
-    <h1 style="text-align: center; margin: 0;"> Тренажёр таблицы умножения</h1>
+    <h2 style="text-align: center; margin: 0;"> Тренажёр таблицы умножения</h2>
     <!--<a href="#">Считаем вместе</a>-->
 </div>
 <div class="line"></div>
@@ -64,8 +65,8 @@
             </tr>
             <tr>
                 <td colspan="6">
-                    <p>Закрепление навыков счёта в игровой форме. Введите результат операции после символа = и нажмите клавишу &quot;Enter&quot;
-                     или кликните по кнопке &quot;Ввод&quot;. Тренажер эффективен, быстр и бесплатен. 
+                    <p>Закрепление навыков счёта в игровой форме. Введите результат операции и нажмите клавишу &quot;Enter&quot;
+                     или кликните по кнопке &quot;Ввод&quot;.
                      Для переключения режимов умножения и деления кликните соответствующую кнопку. 
                      Для перезапуска просто обновите страницу (клавиша F5) или кликните по кнопке &quot;Сброс&quot;.</p>
                 </td>
@@ -76,14 +77,30 @@
                     <strong id="operchar">∙</strong>   
                     <input type="text" maxlength="3" size=2 name="num2" class="input-multipliers" readonly="" value="">
                     <strong style="font-size: 50px; vertical-align: top;">=</strong>   
-                    <input type="text" maxlength="3" size=2 name="res" class="input-form" value="">
+                    <input type="text" maxlength="3" size=2 name="res" id="res" class="input-form" value="">
                     <input type="text" maxlength="3" size=2 name="hint" class="input-multipliers" style="color: green" readonly="">
                 </td>
 
             </tr>
             <tr>
+                <td colspan="6">
+                    <div class="keyboard">
+                        <button type="button" class="number">1</button>
+                        <button type="button" class="number">2</button>
+                        <button type="button" class="number">3</button>
+                        <button type="button" class="number">4</button>
+                        <button type="button" class="number">5</button>
+                        <button type="button" class="number">6</button>
+                        <button type="button" class="number">7</button>
+                        <button type="button" class="number">8</button>
+                        <button type="button" class="number">9</button>
+                        <button type="button" class="number">0</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2" align="left"> <button id="modebutton" type="button" name="modeButton" onclick="return switchMode()" title="Переключение режимов умножение/деление">Режим</button> </td>
-                <td colspan="2" align="center"><input type="submit" name="chkButton" onclick="return chkForm()" value="Ввод" title="Проверить - клавиша ENter"></td>
+                <td colspan="2" align="center"><button name="chkButton" onclick="return chkForm()" title="Проверить - клавиша ENter">Ввод</td>
                 <td colspan="2" align="right"><button type="button" name="resetButton" onclick="return allReset()" title="Перезапуск счётчиков"> Сброс </button> </td>
             </tr>
             </table>

@@ -3,7 +3,19 @@ var startDatetime, startmSecondsime, myTimerIns;
 var allOperands = {firstOperand: 1, secondOperand: 1, trueResult: 1, assumedResult:1, theOperation:0};
 
 $(document).ready(function(){
-    allReset();    
+    //Add buttons listeners
+    var numberkeys=document.getElementsByClassName("number");
+    for(var i=0;i<numberkeys.length;i++) {
+        numberkeys[i].addEventListener('click',function(){
+            let currentres=document.getElementById("res");
+            console.log(currentres.value);
+            currentres.value+=this.innerText;
+            currentres.focus();
+        })
+    }
+    //Initial reset
+    allReset();
+    //Start the timer
     myTimerIns = setInterval(theTimer, 1000);
 });
 
