@@ -10,7 +10,6 @@ $(document).ready(function(){
             let currentres=document.getElementById("res");
             console.log(currentres.value);
             currentres.value+=this.innerText;
-            currentres.focus();
         })
     }
     //Initial reset
