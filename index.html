@@ -1,118 +1,140 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136042633-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-136042633-1');
     </script>
     <meta charset="UTF-8">
     <meta name="description" content="Тренажер таблицы умножения">
     <meta name="keywords" content="тренажёр тренажер таблица умножения">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Таблица умножения - игра.</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="main.css" >
+    <title>Учимся считать играя.</title>
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic"
+        rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="my.js"></script>
-    </head>
+</head>
+
 <body>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
- 
-    ym(52743535, "init", {
-         clickmap:true,
-         trackLinks:true,
-         accurateTrackBounce:true
-    });
- </script>
- <noscript><div><img src="https://mc.yandex.ru/watch/52743535" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-<div class="head">
-    <h2 style="text-align: center; margin: 0;"> Тренажёр таблицы умножения</h2>
-    <!--<a href="#">Считаем вместе</a>-->
-</div>
-<div class="line"></div>
-<div id="content">
-    <!--<h1>Таблица умножения</h1> -->
-    <form action="" method="GET" autocomplete="off">
-        <table width=100%>
-            <tr>
-                <td width="16.6%"></td>
-                <td width="16.6%"></td>
-                <td width="16.6%"></td>
-                <td width="16.6%"></td>
-                <td width="16.6%"></td>
-                <td width="16.6%"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"> <strong style="font-size: x-large; color: green"> Верно </strong></td>
-                <td colspan="2" align="center"> <strong style="font-size: x-large; color: navy"> Время </strong></td>
-                <td colspan="2" align="center"> <strong style="font-size: x-large; color: red"> Неверно </strong></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_ok" class="input-multipliers" style="color: green" readonly value="0"></td>
-                <td colspan="2" align="center"><input type="text" maxlength="8" size=8 name="timer" class="input-multipliers" style="color: navy; width: 144px;" readonly value="0"></td>
-                <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_bad" class="input-multipliers" style="color: red" readonly value="0"></td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <p>Закрепление навыков счёта в игровой форме. Введите результат операции и нажмите клавишу &quot;Enter&quot;
-                     или кликните по кнопке &quot;Ввод&quot;.
-                     Для переключения режимов умножения и деления кликните соответствующую кнопку. 
-                     Для перезапуска просто обновите страницу (клавиша F5) или кликните по кнопке &quot;Сброс&quot;.</p>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6" valign="middle" align="center">
-                    <input type="text" maxlength="3" size=2 name="num1" class="input-multipliers" readonly="" value="">                             
-                    <strong id="operchar">∙</strong>   
-                    <input type="text" maxlength="3" size=2 name="num2" class="input-multipliers" readonly="" value="">
-                    <strong style="font-size: 50px; vertical-align: top;">=</strong>   
-                    <input type="text" maxlength="3" size=2 name="res" id="res" class="input-form" value="">
-                    <input type="text" maxlength="3" size=2 name="hint" class="input-multipliers" style="color: green" readonly="">
-                </td>
+        ym(52743535, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/52743535" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <div class="keyboard">
-                        <button type="button" class="number">1</button>
-                        <button type="button" class="number">2</button>
-                        <button type="button" class="number">3</button>
-                        <button type="button" class="number">4</button>
-                        <button type="button" class="number">5</button>
-                        <button type="button" class="number">6</button>
-                        <button type="button" class="number">7</button>
-                        <button type="button" class="number">8</button>
-                        <button type="button" class="number">9</button>
-                        <button type="button" class="number">0</button>
-                    </div>
-                    <div class="modekeys">
-                        <button class="opermode" type="button" title="Режим &quot;Умножение&quot;">&times;</button>
-                        <button class="opermode" type="button" title="Режим &quot;Деление&quot;">&div;</button>
-                        <button class="opermode" type="button" title="Режим &quot;Сложение&quot;">+</button>
-                        <button class="opermode" type="button" title="Режим &quot;Вычитание&quot;">-</button>
-                        <button class="opermode" type="button" title="Сброс">C</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6" align="center"><button name="chkButton" onclick="return chkForm()" title="Проверить - клавиша ENter">Ввод</td>
-            </tr>
+    <div class="head">
+        <h2 style="text-align: center; margin: 0;"> Тренажёр навыков счёта</h2>
+        <!--<a href="#">Считаем вместе</a>-->
+    </div>
+    <div class="line"></div>
+    <div id="content">
+        <!--<h1>Таблица умножения</h1> -->
+        <form action="" method="GET" autocomplete="off">
+            <table width=100%>
+                <tr>
+                    <td width="16.6%"></td>
+                    <td width="16.6%"></td>
+                    <td width="16.6%"></td>
+                    <td width="16.6%"></td>
+                    <td width="16.6%"></td>
+                    <td width="16.6%"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: green"> Верно </strong>
+                    </td>
+                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: navy"> Время </strong>
+                    </td>
+                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: red"> Неверно </strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_ok"
+                            class="input-multipliers" style="color: green" readonly value="0"></td>
+                    <td colspan="2" align="center"><input type="text" maxlength="8" size=8 name="timer"
+                            class="input-multipliers" style="color: navy; width: 144px;" readonly value="0"></td>
+                    <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_bad"
+                            class="input-multipliers" style="color: red" readonly value="0"></td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <p>Закрепление навыков счёта в игровой форме. Введите результат операции и нажмите клавишу
+                            &quot;Enter&quot;
+                            или кликните по кнопке &quot;Ввод&quot;.
+                            Для переключения режимов умножения и деления кликните соответствующую кнопку.
+                            Для перезапуска просто обновите страницу (клавиша F5) или кликните по кнопке
+                            &quot;Сброс&quot;.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" valign="middle" align="center">
+                        <input type="text" maxlength="3" size=2 name="num1" class="input-multipliers" readonly=""
+                            value="">
+                        <strong id="operchar">∙</strong>
+                        <input type="text" maxlength="3" size=2 name="num2" class="input-multipliers" readonly=""
+                            value="">
+                        <strong style="font-size: 50px; vertical-align: top;">=</strong>
+                        <input type="text" maxlength="3" size=2 name="res" id="res" class="input-form" value="">
+                        <input type="text" maxlength="3" size=2 name="hint" class="input-multipliers"
+                            style="color: green" readonly="">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <div class="keyboard">
+                            <button type="button" class="number">1</button>
+                            <button type="button" class="number">2</button>
+                            <button type="button" class="number">3</button>
+                            <button type="button" class="number">4</button>
+                            <button type="button" class="number">5</button>
+                            <button type="button" class="number">6</button>
+                            <button type="button" class="number">7</button>
+                            <button type="button" class="number">8</button>
+                            <button type="button" class="number">9</button>
+                            <button type="button" class="number">0</button>
+                        </div>
+                        <div class="modekeys">
+                            <button class="opermode" type="button" title="Режим &quot;Умножение&quot;">&times;</button>
+                            <button class="opermode" type="button" title="Режим &quot;Деление&quot;">&div;</button>
+                            <button class="opermode" type="button" title="Режим &quot;Сложение&quot;">+</button>
+                            <button class="opermode" type="button" title="Режим &quot;Вычитание&quot;">-</button>
+                            <button class="opermode" type="button" title="Сброс">C</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" align="center">
+                        <button id="enter" name="chkButton" onclick="return chkForm()" title="Проверить - клавиша ENter">Ввод</button>
+                    </td>
+                </tr>
             </table>
-    </form>
-</div>
-<!--<div id="leftcol">
+        </form>
+    </div>
+    <!--<div id="leftcol">
     <div class="catname">Материалы в левой колонке⋅</div>
 </div> -->
 </body>
+
 </html>
