@@ -54,9 +54,9 @@
                 <td width="16.6%"></td>
             </tr>
             <tr>
-                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: green"> Верно </strong></td>
-                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: navy"> Время </strong></td>
-                    <td colspan="2" align="center"> <strong style="font-size: x-large; color: red"> Неверно </strong></td>
+                <td colspan="2" align="center"> <strong style="font-size: x-large; color: green"> Верно </strong></td>
+                <td colspan="2" align="center"> <strong style="font-size: x-large; color: navy"> Время </strong></td>
+                <td colspan="2" align="center"> <strong style="font-size: x-large; color: red"> Неверно </strong></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="text" maxlength="3" size=3 name="res_ok" class="input-multipliers" style="color: green" readonly value="0"></td>
@@ -96,12 +96,17 @@
                         <button type="button" class="number">9</button>
                         <button type="button" class="number">0</button>
                     </div>
+                    <div class="modekeys">
+                        <button class="opermode" type="button" title="Режим &quot;Умножение&quot;">&times;</button>
+                        <button class="opermode" type="button" title="Режим &quot;Деление&quot;">&div;</button>
+                        <button class="opermode" type="button" title="Режим &quot;Сложение&quot;">+</button>
+                        <button class="opermode" type="button" title="Режим &quot;Вычитание&quot;">-</button>
+                        <button class="opermode" type="button" title="Сброс">C</button>
+                    </div>
                 </td>
             </tr>
             <tr>
-                <td colspan="2" align="left"> <button id="modebutton" type="button" name="modeButton" onclick="return switchMode()" title="Переключение режимов умножение/деление">Режим</button> </td>
-                <td colspan="2" align="center"><button name="chkButton" onclick="return chkForm()" title="Проверить - клавиша ENter">Ввод</td>
-                <td colspan="2" align="right"><button type="button" name="resetButton" onclick="return allReset()" title="Перезапуск счётчиков"> Сброс </button> </td>
+                <td colspan="6" align="center"><button name="chkButton" onclick="return chkForm()" title="Проверить - клавиша ENter">Ввод</td>
             </tr>
             </table>
     </form>
