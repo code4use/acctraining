@@ -45,6 +45,9 @@ td {
     width: 100%;
     margin: 6px auto 6px auto;
 }
+.instruction {
+    display: none;
+}
 
 #leftcol {
     float: left;
