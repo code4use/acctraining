@@ -1,6 +1,6 @@
 var res_ok = 0, res_bad = 0;
 var startDatetime, startmSecondsime, myTimerIns;
-var allOperands = { firstOperand: 1, secondOperand: 1, trueResult: 1, assumedResult: 1, theOperation: 0, theOperationChar: "" };
+var allOperands = { firstOperand: 1, secondOperand: 1, trueResult: 1, assumedResult: 1, theOperationChar: "×" };
 
 $(document).ready(function () {
     //Add number buttons listeners
@@ -16,24 +16,9 @@ $(document).ready(function () {
     for (var i = 0; i < thekeys.length; i++) {
         thekeys[i].addEventListener('click', function () {
             allOperands.theOperationChar = this.innerText;
-            switch (allOperands.theOperationChar) {
-                case "×":
-                    allOperands.theOperation = 0;
-                    break;
-                case "÷":
-                    allOperands.theOperation = 1;
-                    break;
-                case "+":
-                    allOperands.theOperation = 2;
-                    break;
-                case "-":
-                    allOperands.theOperation = 3;
-                    break;
-            }
             allReset();
         })
     }
-
     //Initial reset
     allReset();
     //Start the timer
@@ -58,8 +43,8 @@ function chkForm() {
 
 function newOperands(curOperands) {
     let intTmp1, intTmp2;
-    switch (curOperands.theOperation) {
-        case 3:
+    switch (curOperands.theOperationChar) {
+        case "-":
             //subtraction
             intTmp1 = Math.floor(Math.random() * 100);
             intTmp2 = Math.floor(Math.random() * 100);
@@ -74,7 +59,7 @@ function newOperands(curOperands) {
                 curOperands.trueResult = intTmp2 - intTmp1;
             }
             break;
-        case 2:
+        case "+":
             //addition
             intTmp1 = Math.floor(Math.random() * 50);
             intTmp2 = Math.floor(Math.random() * 50);
@@ -82,7 +67,7 @@ function newOperands(curOperands) {
             curOperands.secondOperand = intTmp2;
             curOperands.trueResult = intTmp1 + intTmp2;
             break;
-        case 1:
+        case "÷":
             //division
             intTmp1 = Math.floor(Math.random() * 10);
             intTmp2 = Math.floor(Math.random() * 10);
@@ -92,7 +77,7 @@ function newOperands(curOperands) {
             curOperands.secondOperand = intTmp1;
             curOperands.trueResult = intTmp2;
             break;
-        case 0:
+        case "×":
             // multiplication
             intTmp1 = Math.floor(Math.random() * 10);
             intTmp2 = Math.floor(Math.random() * 10);
@@ -122,23 +107,7 @@ function allReset() {
     $("input[name=res_ok]").val(String(res_ok));
     $("input[name=res_bad]").val(String(res_bad));
     $("input[name=hint]").val("");
-    switch (allOperands.theOperation) {
-        case 3:
-            $("#operchar").html('-');
-            break;
-        case 2:
-            $("#operchar").html('+');
-            break;
-        case 1:
-            $("#operchar").html('&div;');
-            $("#modebutton").html('Умножение');
-            break;
-        case 0:
-            $("#operchar").html('&times;');
-            $("#modebutton").html('Деление');
-            break;
-    }
-
+    $("#operchar").html(allOperands.theOperationChar);
     allOperands.trueResult = 1;
     allOperands.assumedResult = allOperands.trueResult;
     startDatetime = new Date();
