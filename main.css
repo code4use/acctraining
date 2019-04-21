@@ -11,9 +11,7 @@ body {
     max-width: 360px;
     margin: 0px auto 0px auto;
 }
-td {
-    padding-top: 10px;
-}
+
 .head {
     background-color: white;
     width: 100%;
@@ -27,20 +25,16 @@ td {
     margin: 1px 0 1px 0;
 }
 
-.input-multipliers {
-    text-align: center;
-    font-weight: bold;
-    font-size: xx-large;
-    border: 0;
-    width: 48px;    
-}
 .input-form {
     text-align: center;
     font-weight: bold;
     font-size: xx-large;
     border: 0;
-    background-color: #f0f0f0;
     width: 48px;
+}
+
+.input-background {
+    background-color: #f0f0f0;
 }
 
 .timer {
@@ -50,22 +44,14 @@ td {
 #content {
     background-color: white;
     width: 100%;
-    margin: 6px auto 6px auto;
-}
-.instruction {
-    display: none;
+    margin: 1px auto 1px auto;
 }
 
-#leftcol {
-    float: left;
-    width: 25%;
-    min-width: 205px;
-    margin: 6px 0 0 0px;
-}
 .catname {
     text-align: center;
     background: lightgray;
 }
+
 #operchar {
     font-size: xx-large;
     vertical-align: top;
@@ -87,27 +73,31 @@ button {
 }
 
 .number {
-    width: 50px;
+    width: 100px;
     height: 50px;
     margin: 5px 10px;
     font-weight: bold;
+    font-size: xx-large;
 }
-.opermode {
 
+.opermode {
     width: 50px;
     height: 50px;
     margin: 5px 10px;
     font-weight: bold;
+    font-size: xx-large;
 }
+
 #enter {
     width: 200px;
     height: 50px;
+    font-weight: bold;
 }
 
 .formraw {
     display: flex;
     justify-content: center;
-    margin: 15px 5px;
+    margin: 7px 5px;
 }
 
 .formcolumn {
@@ -115,6 +105,7 @@ button {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    font-size: x-large;
     flex: 1 1 0;
 }
 
@@ -122,4 +113,16 @@ button {
     display: flex;
     justify-content: center;
     margin: 5px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.navy {
+    color: navy;
 }

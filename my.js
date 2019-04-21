@@ -15,7 +15,12 @@ $(document).ready(function () {
     var thekeys = document.getElementsByClassName("opermode");
     for (var i = 0; i < thekeys.length; i++) {
         thekeys[i].addEventListener('click', function () {
-            allOperands.theOperationChar = this.innerText;
+            switch (this.innerText) {
+                case 'C':
+                    break;
+                default:
+                    allOperands.theOperationChar = this.innerText;
+            }
             allReset();
         })
     }
