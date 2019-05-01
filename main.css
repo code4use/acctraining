@@ -1,10 +1,13 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: #f0f0f0;
-    font-size: 14px;
+    font-size: x-large;
+    text-align: center;
     font-family: 'Open Sans', Verdana, Tahoma, sans-serif;
     color: #030303;
     min-width: 360px;
@@ -58,7 +61,7 @@ body {
 }
 
 button {
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 .keyboard {
@@ -77,7 +80,6 @@ button {
     height: 50px;
     margin: 5px 10px;
     font-weight: bold;
-    font-size: xx-large;
 }
 
 .opermode {
@@ -85,7 +87,6 @@ button {
     height: 50px;
     margin: 5px 10px;
     font-weight: bold;
-    font-size: xx-large;
 }
 
 #enter {

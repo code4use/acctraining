@@ -4,22 +4,22 @@ var allOperands = { firstOperand: 1, secondOperand: 1, trueResult: 1, assumedRes
 
 $(document).ready(function () {
     //Add number buttons listeners
-    var thekeys = document.getElementsByClassName("number");
+    var thekeys = $('.number');
     for (var i = 0; i < thekeys.length; i++) {
-        thekeys[i].addEventListener('click', function () {
+        thekeys[i].addEventListener('click', e => {
             let currentres = document.getElementById("res");
-            currentres.value += this.innerText;
+            currentres.value += e.currentTarget.innerText;
         })
     }
     //Add operation mode buttons listeners
-    var thekeys = document.getElementsByClassName("opermode");
+    var thekeys = $(".opermode");
     for (var i = 0; i < thekeys.length; i++) {
-        thekeys[i].addEventListener('click', function () {
-            switch (this.innerText) {
+        thekeys[i].addEventListener('click', e => {
+            switch (e.currentTarget.innerText) {
                 case 'C':
                     break;
                 default:
-                    allOperands.theOperationChar = this.innerText;
+                    allOperands.theOperationChar = e.currentTarget.innerText;
             }
             allReset();
         })
