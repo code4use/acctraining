@@ -95,7 +95,7 @@ button {
     font-weight: bold;
 }
 
-.formraw {
+.formrow {
     display: flex;
     justify-content: center;
     margin: 7px 5px;
