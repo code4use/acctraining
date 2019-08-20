@@ -1,6 +1,13 @@
 var res_ok = 0, res_bad = 0;
 var startDatetime, startmSecondsime, myTimerIns;
-var allOperands = { firstOperand: 1, secondOperand: 1, trueResult: 1, assumedResult: 1, theOperationChar: "×" };
+var allOperands = { firstOperand: 1, secondOperand: 1, trueResult: 1, assumedResult: 1, theOperationChar: "×", theOperationNum: 0 };
+
+var allOperChars = '×÷+-';
+var stats = new Map();
+for (let letter of allOperChars) {
+    stats.set(letter, {hits: 0, mistakes: 0});
+}
+
 
 $(document).ready(function () {
     //Add number buttons listeners
@@ -20,6 +27,7 @@ $(document).ready(function () {
                     break;
                 default:
                     allOperands.theOperationChar = e.currentTarget.innerText;
+                    allOperands.theOperationNum = allOperChars.indexOf(allOperands.theOperationChar);
             }
             allReset();
         })
@@ -35,12 +43,18 @@ function chkForm() {
     allOperands.assumedResult = Number($("input[name=res]").val());
     if (allOperands.trueResult == allOperands.assumedResult) {
         res_ok += 1;
+        stats.get(allOperands.theOperationChar).hits+=1;
         $("input[name=res_ok]").val(String(res_ok));
         $("input[name=hint]").val("");
+        $(".stathits strong:eq("+allOperands.theOperationNum+")").text(String(stats.get(allOperands.theOperationChar).hits));
+        $(".stathits strong:eq(4)").text(String(res_ok));
     }
     else {
         res_bad += 1;
+        stats.get(allOperands.theOperationChar).mistakes+=1;
         $("input[name=res_bad]").val(String(res_bad));
+        $(".statmistakes strong:eq("+allOperands.theOperationNum+")").text(String(stats.get(allOperands.theOperationChar).mistakes));
+        $(".statmistakes strong:eq(4)").text(String(res_bad));
     }
     newRound();
     return false;
