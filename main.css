@@ -5,13 +5,16 @@
 }
 
 body {
-    background-color: #f0f0f0;
+    background-color: lightgray;
     font-size: x-large;
     text-align: center;
     font-family: 'Open Sans', Verdana, Tahoma, sans-serif;
     color: #030303;
-    min-width: 360px;
-    max-width: 360px;
+    margin: 0px auto 0px auto;
+}
+
+.wrapper {
+    width: 320px;
     margin: 0px auto 0px auto;
 }
 
@@ -23,9 +26,9 @@ body {
 }
 
 .line {
-    height: 5px;
+    height: 4px;
     background: lightgrey;
-    margin: 1px 0 1px 0;
+    margin: 1px 4px 1px 4px;
 }
 
 .input-form {
@@ -37,7 +40,7 @@ body {
 }
 
 .input-background {
-    background-color: #f0f0f0;
+    background-color: lightgray;
 }
 
 .timer {
@@ -76,7 +79,7 @@ button {
 }
 
 .number {
-    width: 100px;
+    width: 80px;
     height: 50px;
     margin: 5px 10px;
     font-weight: bold;
