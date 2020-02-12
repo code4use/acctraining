@@ -28,7 +28,7 @@ body {
 .line {
     height: 4px;
     background: lightgrey;
-    margin: 1px 4px 1px 4px;
+    margin: 2px 4px 2px 4px;
 }
 
 .input-form {
