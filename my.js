@@ -36,7 +36,7 @@ function chkForm() {
     if (allOperands.trueResult == allOperands.assumedResult) {
         res_ok += 1;
         $("input[name=res_ok]").val(String(res_ok));
-        $("input[name=hint]").val("");
+        $("input[name=res]").attr("placeholder","");
     }
     else {
         res_bad += 1;
@@ -102,7 +102,8 @@ function newRound() {
         $("input[name=num2]").val(String(allOperands.secondOperand));
     }
     else {
-        $("input[name=hint]").val(String(allOperands.trueResult));
+        $("input[name=res]").attr("placeholder",String(allOperands.trueResult));
+                
     }
     $("input[name=res]").val("");
 }
@@ -111,7 +112,7 @@ function allReset() {
     res_ok = 0, res_bad = 0;
     $("input[name=res_ok]").val(String(res_ok));
     $("input[name=res_bad]").val(String(res_bad));
-    $("input[name=hint]").val("");
+    $("input[name=res]").attr("placeholder","");
     $("#operchar").html(allOperands.theOperationChar);
     allOperands.trueResult = 1;
     allOperands.assumedResult = allOperands.trueResult;
