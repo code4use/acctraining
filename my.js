@@ -143,7 +143,7 @@ objKeysDiv.addEventListener('click', e => {
             handleMode(strInnerText);
         } else if (strNumbers.includes(strInnerText)) { // Number button handle
             handleNumber(strInnerText);
-        } else if (strInnerText=='BS'){
+        } else if (strInnerText=='Del'){
             allOperands.strAssumedResult = '';
             objResult.value = '';
         }
