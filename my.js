@@ -1,56 +1,67 @@
+//Get element once only
+var objKeysDiv = document.getElementById("idkeys"),
+    objDisplay = document.getElementById("iddisplay")
+    objResult = document.getElementById("idresult"),
+    objGoodResults = document.getElementById("goodresults"),
+    objBadResults = document.getElementById("badresults")
+    objTimer = document.getElementById("timer");
+    
+const strMode = '+−×÷', strNumbers = '0123456789';
+
 var res_ok = 0, res_bad = 0;
-var startDatetime, startmSecondsime, myTimerIns;
-var allOperands = { firstOperand: 1, secondOperand: 1, trueResult: 1, assumedResult: 1, theOperationChar: "×" };
+var startDatetime, startmSecondsime, myTimerIns,
+    isRoundEnd=false;
+var allOperands = { firstOperand: 1, secondOperand: 1,
+        trueResult: 1, assumedResult: 1, theOperationChar: "×",
+        strAssumedResult: '', strTrueResult: '', strExpression: ''};
 
-$(document).ready(function () {
-    //Add number buttons listeners
-    var thekeys = $('.number');
-    for (var i = 0; i < thekeys.length; i++) {
-        thekeys[i].addEventListener('click', e => {
-            let currentres = document.getElementById("res");
-            currentres.value += e.currentTarget.innerText;
-        })
+//
+function handleMode(strMode) {
+    if ( strMode==allOperands.theOperationChar ) {
+        return;        
     }
-    //Add operation mode buttons listeners
-    var thekeys = $(".opermode");
-    for (var i = 0; i < thekeys.length; i++) {
-        thekeys[i].addEventListener('click', e => {
-            switch (e.currentTarget.innerText) {
-                case 'C':
-                    break;
-                default:
-                    allOperands.theOperationChar = e.currentTarget.innerText;
-            }
-            allReset();
-        })
-    }
-    //Initial reset
-    allReset();
-    //Start the timer
-    myTimerIns = setInterval(theTimer, 1000);
+    allOperands.theOperationChar=strMode;
+    allInit();
+    newRound();    
+}
 
-});
+function handleNumber(strNumber) {
+    allOperands.strAssumedResult+=strNumber;
+    objResult.value = allOperands.strAssumedResult;
+    
+    if (allOperands.strAssumedResult==allOperands.strTrueResult) {
+        // Right result entered
+        ++res_ok;
+        isRoundEnd=true;
+        objGoodResults.innerHTML = res_ok.toString();
+    }
+    else if (allOperands.strAssumedResult.length == allOperands.strTrueResult.length) {
+        // Wrong result entered
+        ++res_bad;
+        isRoundEnd=true;
+        objBadResults.innerHTML = res_bad.toString();
+    }
+    
+}
 
-function chkForm() {
-    allOperands.assumedResult = Number($("input[name=res]").val());
-    if (allOperands.trueResult == allOperands.assumedResult) {
-        res_ok += 1;
-        $("input[name=res_ok]").val(String(res_ok));
-        $("input[name=res]").attr("placeholder","");
+function newRound() { 
+    // Correct result. Both operands initiaziled with ''
+    if (allOperands.strAssumedResult==allOperands.strTrueResult) { 
+    newOperands(allOperands);
+    objDisplay.innerHTML = allOperands.strExpression;
+    objResult.value = allOperands.strAssumedResult;
+    objResult.placeholder = '';
+    } else  { // Mistake handle
+    allOperands.strAssumedResult = '';
+    objResult.value = '';
+    objResult.placeholder = allOperands.strTrueResult;
     }
-    else {
-        res_bad += 1;
-        $("input[name=res_bad]").val(String(res_bad));
-    }
-    newRound();
-    return false;
 }
 
 function newOperands(curOperands) {
     let intTmp1, intTmp2;
     switch (curOperands.theOperationChar) {
-        case "-":
-            //subtraction
+        case "−": //subtraction
             intTmp1 = Math.floor(Math.random() * 100);
             intTmp2 = Math.floor(Math.random() * 100);
             if (intTmp1 > intTmp2) {
@@ -64,16 +75,14 @@ function newOperands(curOperands) {
                 curOperands.trueResult = intTmp2 - intTmp1;
             }
             break;
-        case "+":
-            //addition
-            intTmp1 = Math.floor(Math.random() * 50);
-            intTmp2 = Math.floor(Math.random() * 50);
+        case "+": //addition
+            intTmp1 = Math.floor(Math.random() * 40) + 9;
+            intTmp2 = Math.floor(Math.random() * 40) + 9;
             curOperands.firstOperand = intTmp1;
             curOperands.secondOperand = intTmp2;
             curOperands.trueResult = intTmp1 + intTmp2;
             break;
-        case "÷":
-            //division
+        case "÷": //division
             intTmp1 = Math.floor(Math.random() * 10);
             intTmp2 = Math.floor(Math.random() * 10);
             if (intTmp1 < 2) intTmp1 = 9 - intTmp1;
@@ -82,8 +91,7 @@ function newOperands(curOperands) {
             curOperands.secondOperand = intTmp1;
             curOperands.trueResult = intTmp2;
             break;
-        case "×":
-            // multiplication
+        case "×": // multiplication
             intTmp1 = Math.floor(Math.random() * 10);
             intTmp2 = Math.floor(Math.random() * 10);
             if (intTmp1 < 2) intTmp1 = 9 - intTmp1;
@@ -93,35 +101,12 @@ function newOperands(curOperands) {
             curOperands.trueResult = intTmp1 * intTmp2;
             break;
     }
-}
-
-function newRound() {
-    if (allOperands.trueResult == allOperands.assumedResult) {
-        newOperands(allOperands);
-        $("input[name=num1]").val(String(allOperands.firstOperand));
-        $("input[name=num2]").val(String(allOperands.secondOperand));
-    }
-    else {
-        $("input[name=res]").attr("placeholder",String(allOperands.trueResult));
-                
-    }
-    $("input[name=res]").val("");
-}
-
-function allReset() {
-    res_ok = 0, res_bad = 0;
-    $("input[name=res_ok]").val(String(res_ok));
-    $("input[name=res_bad]").val(String(res_bad));
-    $("input[name=res]").attr("placeholder","");
-    $("#operchar").html(allOperands.theOperationChar);
-    allOperands.trueResult = 1;
-    allOperands.assumedResult = allOperands.trueResult;
-    startDatetime = new Date();
-    startmSeconds = startDatetime.getTime();
-    $("input[name=timer]").val("0:0");
-    newRound();
-    $("input[name=res]").focus();
-    return false;
+    curOperands.strTrueResult = curOperands.trueResult.toString();
+    curOperands.strAssumedResult = '';
+    curOperands.strExpression = allOperands.firstOperand.toString()
+        + ' ' + allOperands.theOperationChar
+        + ' ' + allOperands.secondOperand.toString()
+        + ' = ';
 }
 
 function theTimer() {
@@ -129,6 +114,60 @@ function theTimer() {
     let curmSeconds = curDatetime.getTime();
     let seconds = Math.floor((curmSeconds - startmSeconds) / 1000);
     let minutes = Math.floor(seconds / 60);
-    seconds %= 60;
-    $("input[name=timer]").val(String(minutes) + ":" + String(seconds));
+    objTimer.innerHTML=String(minutes) + ":" + String(seconds % 60);
+    if ( isRoundEnd ) {
+        isRoundEnd = false;
+        newRound();
+    }
 }
+
+function allInit(params) {
+    startDatetime = new Date();
+    startmSeconds = startDatetime.getTime();
+    document.getElementById('timer').innerHTML='0:0';
+    allOperands.strAssumedResult = '';
+    allOperands.strTrueResult = '';
+    document.getElementById('idresult').placeholder= '' ;
+    res_ok = 0;
+    objGoodResults.innerHTML = res_ok.toString();
+    res_bad = 0;
+    objBadResults.innerHTML = res_bad.toString();
+
+}
+
+// Entry point
+objKeysDiv.addEventListener('click', e => {
+    if ( e.target.tagName=='BUTTON') {
+        let strInnerText = e.target.innerHTML;
+        if ( strMode.includes(strInnerText) ) { // Operation button handle
+            handleMode(strInnerText);
+        } else if (strNumbers.includes(strInnerText)) { // Number button handle
+            handleNumber(strInnerText);
+        } else if (strInnerText=='BS'){
+            allOperands.strAssumedResult = '';
+            objResult.value = '';
+        }
+         else {(strInnerText=='C')
+            allInit();
+            newRound();
+         }
+    }
+})
+
+document.addEventListener('keydown', e => {
+   
+    if (strNumbers.includes(e.key)) { // Number key has been pressed
+        handleNumber(e.key);
+    }
+    if ( strMode.includes(e.key) )  {
+        handleNumber(e.key);
+    }
+    if (e.key=='Backspace' || e.key=='Delete') { // Backspace handler
+        allOperands.strAssumedResult = '';
+        objResult.value = '';
+    }
+})
+
+allInit();
+myTimerIns = setInterval(theTimer, 200);
+newRound();

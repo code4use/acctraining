@@ -1,121 +1,76 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136042633-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-136042633-1');
-    </script>
     <meta charset="UTF-8">
-    <meta name="description" content="Multiplication division practice Тренажер умножения и деления">
-    <meta name="keywords"
-        content="тренажёр тренажер таблица умножения деление multiplication division practice">
+    <meta name="description" content="Multiplication division counting practice Тренажер умножения и деления">
+    <meta name="keywords" content="тренажёр тренажер таблица умножения деление multiplication division practice">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Math training</title>
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic"
-        rel="stylesheet" />
+    <title>Counting practice. Тренажёр счёта.</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" 
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic">
+    <link rel="stylesheet" href="main.css">
 </head>
-
 <body>
-    <div class="wrapper">
-        <div class="head">
-            <!-- <h4> Тренажёр счёта</h4> -->
-        </div>
-        <!-- <div class="line"></div> -->
-        <div id="content">
-            <form action="" method="GET" autocomplete="off">
-                <div class="formrow">
-                    <div class="formcolumn green">
-                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                        <input type="text" maxlength="3" size=3 name="res_ok" class="input-form green" readonly
-                            value="0">
-                    </div>
-                    <div class="formcolumn">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        <input type="text" maxlength="10" size=10 name="timer" class="input-form timer" readonly
-                            value="0">
-                    </div>
-                    <div class="formcolumn red">
-                        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                        <input type="text" maxlength="3" size=3 name="res_bad" class="input-form red" readonly
-                            value="0">
-                    </div>
+    <div class="container-wrapper">
+        <div class="container">
+            <form action="" >
+            <div class="formrow">
+                <div class="formcolumn">
+                    <i class="fa fa-thumbs-o-up green" aria-hidden="true"></i>
+                    <p id="goodresults" class="green">0</p></div>    
+                <div class="formcolumn">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <p id="timer">0</p>
+                </div>
+                <div class="formcolumn">
+                    <i class="fa fa-thumbs-o-down red" aria-hidden="true"></i>
+                    <p id="badresults" class="red">0</p>
+                </div>
+            </div>
+            
+            <div class="line"> </div>
+
+            <div class="display">
+                <p id="iddisplay"> </p>
+                &nbsp;
+                <input type="text" size=2 readonly="" name="result" id="idresult">
+                
+            </div>
+            
+            <div class="line"> </div>
+
+            <div id=idkeys class="keys">
+                <div class="numkeys">
+                <button type="button">1</button>
+                <button type="button">2</button>
+                <button type="button">3</button>
+                <div class="linebreak"></div>
+                <button type="button">4</button>
+                <button type="button">5</button>
+                <button type="button">6</button>
+                <div class="linebreak"></div>
+                <button type="button">7</button>
+                <button type="button">8</button>
+                <button type="button">9</button>
+                <div class="linebreak"></div>
+                <button type="button" title="Reset stats Сброс статистики">C</button>
+                <button type="button">0</button>
+                <button type="button" title="Delete">Del</button>
                 </div>
 
-                <div class="line"></div>
-
-                <div class="formrow spaces-around">
-                    <input type="text" maxlength="2" size=2 name="num1" class="input-form" readonly="" value="">
-                    <strong id="operchar">x</strong>
-                    <input type="text" maxlength="2" size=2 name="num2" class="input-form" readonly="" value="">
-                    <strong style="font-size: xx-large; vertical-align: top;">=</strong>
-                    <input type="text" maxlength="3" size=2 name="res" id="res" class="input-form input-background"
-                        value="" title="Введите результат. Enter result.">
-                </div>
-                <div class="line"></div>
-
-                <div class="keyboard">
-                    <button class="number" type="button">1</button>
-                    <button class="number" type="button">2</button>
-                    <button class="number" type="button">3</button>
-                    <div class="linebreak"></div>
-                    <button class="number" type="button">4</button>
-                    <button class="number" type="button">5</button>
-                    <button class="number" type="button">6</button>
-                    <div class="linebreak"></div>
-                    <button class="number" type="button">7</button>
-                    <button class="number" type="button">8</button>
-                    <button class="number" type="button">9</button>
-                    <div class="linebreak"></div>
-                    <button class="number" type="button">0</button>
-                    <button id="enter" name="chkButton" onclick="return chkForm()"
-                        title="Проверить - клавиша ENter">Enter</button>
-                </div>
-
-                <div class="line"></div>
+                <div class="linebreak line"></div>
 
                 <div class="modekeys">
-                    <button class="opermode" type="button" title="Умножение. Multiplication.">&times;</button>
-                    <button class="opermode" type="button" title="Деление. Division.">&div;</button>
-                    <button class="opermode" type="button" title="Сложение. Addition.">+</button>
-                    <button class="opermode" type="button" title="Вычитание. Subtraction.">-</button>
-                    <button class="opermode" type="button" title="Сброс. Clear.">C</button>
+                <button type="button">&plus;</button>                
+                <button type="button">&minus;</button>                
+                <button type="button">&times;</button>                
+                <button type="button">&div;</button>
                 </div>
-
-            </form>
+            </div>
+            </form> 
         </div>
-
-        <!-- Yandex.Metrika counter -->
-        <script type="text/javascript">
-            (function (m, e, t, r, i, k, a) {
-                m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-                m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-            })
-                (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            ym(52743535, "init", {
-                clickmap: true,
-                trackLinks: true,
-                accurateTrackBounce: true
-            });
-        </script>
-        <noscript>
-            <div><img src="https://mc.yandex.ru/watch/52743535" style="position:absolute; left:-9999px;" alt="" /></div>
-        </noscript>
-        <!-- /Yandex.Metrika counter -->
-
-        <script src="my.js"></script>
     </div>
+    <script src="my.js"></script>
 </body>
-
 </html>
