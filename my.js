@@ -33,13 +33,13 @@ function handleNumber(strNumber) {
         // Right result entered
         ++res_ok;
         isRoundEnd=true;
-        objGoodResults.innerHTML = res_ok.toString();
+        objGoodResults.textContent = res_ok.toString();
     }
     else if (allOperands.strAssumedResult.length == allOperands.strTrueResult.length) {
         // Wrong result entered
         ++res_bad;
         isRoundEnd=true;
-        objBadResults.innerHTML = res_bad.toString();
+        objBadResults.textContent = res_bad.toString();
     }
     
 }
@@ -48,7 +48,7 @@ function newRound() {
     // Correct result. Both operands initiaziled with ''
     if (allOperands.strAssumedResult==allOperands.strTrueResult) { 
     newOperands(allOperands);
-    objDisplay.innerHTML = allOperands.strExpression;
+    objDisplay.textContent = allOperands.strExpression;
     objResult.value = allOperands.strAssumedResult;
     objResult.placeholder = '';
     } else  { // Mistake handle
@@ -114,7 +114,7 @@ function theTimer() {
     let curmSeconds = curDatetime.getTime();
     let seconds = Math.floor((curmSeconds - startmSeconds) / 1000);
     let minutes = Math.floor(seconds / 60);
-    objTimer.innerHTML=String(minutes) + ":" + String(seconds % 60);
+    objTimer.textContent=String(minutes) + ":" + String(seconds % 60);
     if ( isRoundEnd ) {
         isRoundEnd = false;
         newRound();
@@ -124,30 +124,31 @@ function theTimer() {
 function allInit(params) {
     startDatetime = new Date();
     startmSeconds = startDatetime.getTime();
-    document.getElementById('timer').innerHTML='0:0';
+    document.getElementById('timer').textContent='0:0';
     allOperands.strAssumedResult = '';
     allOperands.strTrueResult = '';
     document.getElementById('idresult').placeholder= '' ;
     res_ok = 0;
-    objGoodResults.innerHTML = res_ok.toString();
+    objGoodResults.textContent = res_ok.toString();
     res_bad = 0;
-    objBadResults.innerHTML = res_bad.toString();
+    objBadResults.textContent = res_bad.toString();
 
 }
 
 // Entry point
 objKeysDiv.addEventListener('click', e => {
     if ( e.target.tagName=='BUTTON') {
-        let strInnerText = e.target.innerHTML;
+        let strInnerText = e.target.textContent;
+        console.log(e.target);
         if ( strMode.includes(strInnerText) ) { // Operation button handle
             handleMode(strInnerText);
         } else if (strNumbers.includes(strInnerText)) { // Number button handle
             handleNumber(strInnerText);
-        } else if (strInnerText=='Del'){
+        } else if (strInnerText==='Del'){
             allOperands.strAssumedResult = '';
             objResult.value = '';
         }
-         else {(strInnerText=='C')
+         else {(strInnerText==='C')
             allInit();
             newRound();
          }
