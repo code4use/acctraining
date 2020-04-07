@@ -9,8 +9,7 @@ var objKeysDiv = document.getElementById("idkeys"),
 const strMode = '+−×÷', strNumbers = '0123456789';
 
 var res_ok = 0, res_bad = 0;
-var startDatetime, startmSecondsime, myTimerIns,
-    isRoundEnd=false;
+var startDatetime, startmSecondsime, myTimerIns;
 var allOperands = { firstOperand: 1, secondOperand: 1,
         trueResult: 1, assumedResult: 1, theOperationChar: "×",
         strAssumedResult: '', strTrueResult: '', strExpression: ''};
@@ -32,14 +31,14 @@ function handleNumber(strNumber) {
     if (allOperands.strAssumedResult==allOperands.strTrueResult) {
         // Right result entered
         ++res_ok;
-        isRoundEnd=true;
         objGoodResults.textContent = res_ok.toString();
+        setTimeout(newRound,100);
     }
     else if (allOperands.strAssumedResult.length == allOperands.strTrueResult.length) {
         // Wrong result entered
         ++res_bad;
-        isRoundEnd=true;
         objBadResults.textContent = res_bad.toString();
+        setTimeout(newRound,100);
     }
     
 }
@@ -115,10 +114,7 @@ function theTimer() {
     let seconds = Math.floor((curmSeconds - startmSeconds) / 1000);
     let minutes = Math.floor(seconds / 60);
     objTimer.textContent=String(minutes) + ":" + String(seconds % 60);
-    if ( isRoundEnd ) {
-        isRoundEnd = false;
-        newRound();
-    }
+    
 }
 
 function allInit(params) {
@@ -138,7 +134,7 @@ function allInit(params) {
 // Entry point
 objKeysDiv.addEventListener('click', e => {
     if ( e.target.tagName=='BUTTON') {
-        let strInnerText = e.target.name;
+        let strInnerText = e.target.textContent;
         if ( strMode.includes(strInnerText) ) { // Operation button handle
             handleMode(strInnerText);
         } else if (strNumbers.includes(strInnerText)) { // Number button handle
@@ -169,5 +165,5 @@ document.addEventListener('keydown', e => {
 })
 
 allInit();
-myTimerIns = setInterval(theTimer, 200);
+myTimerIns = setInterval(theTimer, 1000);
 newRound();
