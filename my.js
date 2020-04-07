@@ -138,8 +138,7 @@ function allInit(params) {
 // Entry point
 objKeysDiv.addEventListener('click', e => {
     if ( e.target.tagName=='BUTTON') {
-        let strInnerText = e.target.textContent;
-        console.log(e.target);
+        let strInnerText = e.target.name;
         if ( strMode.includes(strInnerText) ) { // Operation button handle
             handleMode(strInnerText);
         } else if (strNumbers.includes(strInnerText)) { // Number button handle
